@@ -1,0 +1,46 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: sheet
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://ec2-52-71-231-37.compute-1.amazonaws.com:5432/ddjg319q5b97l2
+    username: neosdkyhiiypeo
+    password: cbcd6ba1be7ff81d5100ec549b69a445cf2eaf1b9e5686fad4c01229b973fef0
+  jmx:
+    enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  flyway:
+    baseline-on-migrate: true
+
+host:
+  link:
+    authorization: https://ms-timesheet-auth-app-dev.herokuapp.com/oauth/token
+
+security:
+  oauth2:
+    resource:
+      user-info-uri: https://ms-timesheet-auth-app-dev.herokuapp.com/person-auth/me
+      
+person:
+  properties:
+    check_token: https://ms-timesheet-auth-app-dev.herokuapp.com/oauth/check_token
+    client_id: client
+    client_secret: secret
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: https://eureka-server-app-dev.herokuapp.com/eureka
